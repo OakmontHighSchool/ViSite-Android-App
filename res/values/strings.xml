@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="app_name">ViSite</string>
+	<string name="scan_code">Scan Code</string>
+	<string name="web_link">Go To Web interface</string>
+	<string name="error">Error</string>
+</resources>

@@ -1,0 +1,6 @@
+build.xml
+local.properties
+*.iml
+gen/
+.idea/
+bin/

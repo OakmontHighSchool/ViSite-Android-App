@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+		>
+	<Button
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:text="@string/scan_code"
+	        android:onClick="onClick"
+			android:id="@+id/scan_code"/>
+	<TextView
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:id="@+id/status"/>
+	<Button
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:text="@string/error"
+				android:id="@+id/check_button"
+				android:layout_gravity="center_horizontal"
+				android:layout_marginTop="50dp"
+				android:onClick="onClick"
+				android:visibility="gone"/>
+		<EditText
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:id="@+id/edit_name"
+				android:visibility="gone"/>
+	<Button
+			android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+			android:layout_marginTop="50dp"
+			android:text="@string/web_link"
+			android:onClick="onClick"
+			android:id="@+id/web_button"/>
+</LinearLayout>
+
