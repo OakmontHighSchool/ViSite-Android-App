@@ -4,14 +4,12 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class LogEntry {
-	public Item item;
 	public int daysCheckedout;
 	public String person;
 	public String checkout;
 	public String checkin;
 
-	public LogEntry(Item item, JSONObject json) {
-		this.item = item;
+	public LogEntry(JSONObject json) {
 		try {
 			person = json.getString("person");
 			daysCheckedout = json.getInt("daysCheckedout");

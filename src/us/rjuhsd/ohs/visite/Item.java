@@ -20,12 +20,12 @@ import java.util.Map;
 public class Item {
 	private final MainActivity activity;
 	public boolean checkedIn;
-	public int pk;
-	private String tag;
-	public String person;
+	final public int pk;
+	final private String tag;
+	private String person;
 	public String name;
-	public int daysCheckedout;
-	public ArrayList<LogEntry> log = new ArrayList<LogEntry>();
+	private int daysCheckedout;
+	final private ArrayList<LogEntry> log = new ArrayList<LogEntry>();
 
 	public Item(MainActivity activity, String tag, int pk) {
 		this.activity = activity;
@@ -78,7 +78,7 @@ public class Item {
 			JSONArray logEntrys = json.getJSONArray("log");
 			for(int i=0;i<logEntrys.length();i++) {
 				Log.d("DragonIn", logEntrys.get(i).toString());
-				log.add(new LogEntry(this, logEntrys.getJSONObject(i)));
+				log.add(new LogEntry(logEntrys.getJSONObject(i)));
 			}
 		} catch (JSONException e) {
 			e.printStackTrace();

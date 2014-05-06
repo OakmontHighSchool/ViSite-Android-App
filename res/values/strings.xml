@@ -5,4 +5,5 @@
 	<string name="web_link">Go To Web interface</string>
 	<string name="error">Error</string>
 	<string name="log_label">History</string>
+	<string name="edit_name_hint">Person checking this item out</string>
 </resources>

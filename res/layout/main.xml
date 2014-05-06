@@ -18,7 +18,8 @@
 			android:layout_width="fill_parent"
 			android:layout_height="wrap_content"
 			android:id="@+id/edit_name"
-			android:visibility="gone"/>
+			android:visibility="gone"
+			android:hint="@string/edit_name_hint"/>
 	<Button
 			android:layout_width="fill_parent"
 			android:layout_height="wrap_content"

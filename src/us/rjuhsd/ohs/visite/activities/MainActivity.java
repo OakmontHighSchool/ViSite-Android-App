@@ -14,7 +14,7 @@ import us.rjuhsd.ohs.visite.zxing.IntentResult;
 
 public class MainActivity extends Activity {
 
-	Item item;
+	private Item item;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
