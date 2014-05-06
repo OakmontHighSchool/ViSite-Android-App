@@ -34,11 +34,6 @@ public class Item {
 		this.tag = tag;
 		this.person = "";
 		new ItemGetTask().execute(this);
-		((TextView) activity.findViewById(R.id.status)).setText("");
-		activity.findViewById(R.id.check_button).setVisibility(View.GONE);
-		activity.findViewById(R.id.edit_name).setVisibility(View.GONE);
-		activity.findViewById(R.id.logList).setVisibility(View.GONE);
-		activity.findViewById(R.id.web_button).setVisibility(View.GONE);
 	}
 
 	public void editButton() {
@@ -66,6 +61,7 @@ public class Item {
 		}
 		activity.findViewById(R.id.check_button).setVisibility(View.VISIBLE);
 		activity.findViewById(R.id.web_button).setVisibility(View.VISIBLE);
+		activity.findViewById(R.id.log_label).setVisibility(View.VISIBLE);
 
 		ListView logList = (ListView)activity.findViewById(R.id.logList);
 		logList.setAdapter(new LogAdapter(activity, android.R.layout.simple_list_item_2, log));
