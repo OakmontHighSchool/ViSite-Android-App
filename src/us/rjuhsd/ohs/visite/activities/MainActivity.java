@@ -31,7 +31,7 @@ public class MainActivity extends Activity {
 				item.editButton();
 				break;
 			case R.id.web_button:
-				startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(item.getURL()+item.pk+"/qrcode")));
+				startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(item.getURL()+item.pk)));
 				break;
 		}
 	}
