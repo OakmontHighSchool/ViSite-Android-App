@@ -62,15 +62,9 @@ public class Item {
 	public void process(String response) {
 		try {
 			JSONObject json = new JSONObject(response);
-			if(json.getBoolean("checkout")) {
-				checkedIn = false;
-				person = json.getString("person");
-				name = json.getString("name");
-			} else {
-				checkedIn = true;
-				person = "";
-				name = json.getString("name");
-			}
+			name = json.getString("name");
+			person = json.optString("person");
+			checkedIn = !json.getBoolean("checkout");
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
