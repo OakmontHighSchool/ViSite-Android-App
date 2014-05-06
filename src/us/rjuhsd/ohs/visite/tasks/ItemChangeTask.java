@@ -29,7 +29,7 @@ public class ItemChangeTask extends AsyncTask<Item, Void, Void> {
 				List<NameValuePair> nvps = new ArrayList<NameValuePair>();
 				nvps.add(new BasicNameValuePair("id", item.pk+""));
 				nvps.add(new BasicNameValuePair("name", item.name));
-				nvps.add(new BasicNameValuePair("next", "/inv/item/"+item.pk));
+				nvps.add(new BasicNameValuePair("next", "/inv/item/"+item.pk+"/json"));
 
 				if(item.checkedIn) {
 					request = new HttpPost(item.getURL() + "/checkin");

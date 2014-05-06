@@ -17,7 +17,7 @@ public class ItemGetTask extends AsyncTask<Item, Void, Void> {
 		this.items = items;
 		for(Item item : items) {
 			try {
-				HttpGet request = new HttpGet(item.getURL()+item.pk);
+				HttpGet request = new HttpGet(item.getURL()+item.pk+"/json");
 				HttpClient client = new DefaultHttpClient();
 				HttpResponse response = client.execute(request);
 				String raw = EntityUtils.toString(response.getEntity(), "UTF-8");
