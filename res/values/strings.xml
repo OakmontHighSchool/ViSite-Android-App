@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 	<string name="app_name">ViSite</string>
-	<string name="scan_code">Scan Code</string>
+	<string name="scan_code">Scan QR Code</string>
 	<string name="web_link">Go To Web interface</string>
 	<string name="error">Error</string>
 	<string name="log_label">History</string>
 	<string name="edit_name_hint">Person checking this item out</string>
+    <string name="add_barcode">Add Barcode</string>
+    <string name="scan_by_barcode">Scan By Barcode</string>
 </resources>
