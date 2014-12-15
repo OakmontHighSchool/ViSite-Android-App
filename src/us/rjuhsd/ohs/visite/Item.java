@@ -20,11 +20,11 @@ import java.util.Map;
 public class Item {
 	private final MainActivity activity;
 	public boolean checkedIn;
-	final public int pk;
-	final private String tag;
+	public int pk;
+	private String tag;
 	private String person;
 	public String name;
-	private int daysCheckedout;
+	private int daysCheckedOut;
 	final private ArrayList<LogEntry> log = new ArrayList<LogEntry>();
 
 	public Item(MainActivity activity, String tag, int pk) {
@@ -35,6 +35,10 @@ public class Item {
 		this.person = "";
 		new ItemGetTask().execute(this);
 	}
+
+    public Item(MainActivity activity) {
+        this.activity = activity;
+    }
 
 	public void editButton() {
 		if(((EditText)activity.findViewById(R.id.edit_name)).getText().toString().equals("") && checkedIn) {
@@ -55,7 +59,7 @@ public class Item {
 			((Button)activity.findViewById(R.id.check_button)).setText("Check out this item");
 			activity.findViewById(R.id.edit_name).setVisibility(View.VISIBLE);
 		} else {
-			((TextView) activity.findViewById(R.id.status)).setText("'"+name+"' is checked out to '"+person+"'\n(This item has been checked out for "+daysCheckedout+" days)");
+			((TextView) activity.findViewById(R.id.status)).setText("'"+name+"' is checked out to '"+person+"'\n(This item has been checked out for "+ daysCheckedOut +" days)");
 			((Button)activity.findViewById(R.id.check_button)).setText("Check in this item");
 			activity.findViewById(R.id.edit_name).setVisibility(View.GONE);
 		}
@@ -74,7 +78,7 @@ public class Item {
 			name = json.getString("name");
 			person = json.optString("person");
 			checkedIn = !json.getBoolean("checkout");
-			daysCheckedout = json.optInt("daysCheckedout");
+			daysCheckedOut = json.optInt("daysCheckedOut");
 			JSONArray logEntrys = json.getJSONArray("log");
 			for(int i=0;i<logEntrys.length();i++) {
 				Log.d("DragonIn", logEntrys.get(i).toString());
@@ -85,14 +89,22 @@ public class Item {
 		}
 	}
 
+    public static Map<String,String> getMap() {
+        Map<String,String> map = new HashMap<String, String>();
+        map.put("Media","10.1.121.80");
+        map.put("Debug","10.1.121.38");
+        return map;
+    }
+
 	private String getIP() {
-		Map<String,String> map = new HashMap<String, String>();
-		map.put("Media","10.1.121.80");
-		map.put("Debug","10.1.121.38");
-		return map.get(tag);
+		return getMap().get(tag);
 	}
 
 	public String getURL() {
-		return "http://"+getIP()+"/inv/item/";
+		return getURL(getIP());
 	}
+
+    public static String getURL(String ip) {
+        return "http://"+ip+"/inv/item/";
+    }
 }

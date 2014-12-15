@@ -9,12 +9,14 @@ import android.os.Bundle;
 import android.view.View;
 import us.rjuhsd.ohs.visite.Item;
 import us.rjuhsd.ohs.visite.R;
+import us.rjuhsd.ohs.visite.tasks.ItemBarcodeLookupTask;
 import us.rjuhsd.ohs.visite.zxing.IntentIntegrator;
 import us.rjuhsd.ohs.visite.zxing.IntentResult;
 
 public class MainActivity extends Activity {
 
-	private Item item;
+	public Item item;
+    public String barcode;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -42,11 +44,14 @@ public class MainActivity extends Activity {
 				if (resultCode != RESULT_CANCELED) {
 					IntentResult scanResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
 					if (scanResult != null) {
-						String upc = scanResult.getContents();
-						String[] qrdata = upc.split(":");
-						if(qrdata.length == 2) {
-							item = new Item(this, qrdata[0], Integer.parseInt(qrdata[1]));
-						} else {
+                        String upc = scanResult.getContents();
+                        String[] qrdata = upc.split(":");
+                        if (qrdata.length == 2) {
+                            item = new Item(this, qrdata[0], Integer.parseInt(qrdata[1]));
+                        } else if(qrdata.length == 1) {
+                            barcode = qrdata[0];
+                            new ItemBarcodeLookupTask().execute(this);
+                        } else {
 							qrError();
 						}
 					}
@@ -59,7 +64,7 @@ public class MainActivity extends Activity {
 	public void qrError() {
 		new AlertDialog.Builder(this)
 				.setTitle("Invalid Item ID")
-				.setMessage("This QR code appears invalid, try again")
+				.setMessage("This code appears invalid, try again")
 				.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int which) {
 						// Hey they clicked me!
