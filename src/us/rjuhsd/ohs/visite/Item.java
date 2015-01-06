@@ -79,6 +79,8 @@ public class Item {
 			person = json.optString("person");
 			checkedIn = !json.getBoolean("checkout");
 			daysCheckedOut = json.optInt("daysCheckedOut");
+            pk = json.getInt("pk");
+            tag = json.getString("server_tag");
 			JSONArray logEntrys = json.getJSONArray("log");
 			for(int i=0;i<logEntrys.length();i++) {
 				Log.d("DragonIn", logEntrys.get(i).toString());
